@@ -1,0 +1,6 @@
+definitions:
+  Version:
+    properties:
+      version:
+        type: string
+        example: v5_0

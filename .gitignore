@@ -1,0 +1,5 @@
+dumps
+node_modules
+public
+complete-swagger-*.yaml
+.DS_Store

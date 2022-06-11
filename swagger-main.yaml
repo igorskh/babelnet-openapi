@@ -1,0 +1,39 @@
+swagger: "2.0"
+info:
+  title: BabbelNet Unofficial API
+  description: Unofficial API description for BabbelNet.
+  version: 1.0.0
+host: babelnet.io
+basePath: /v6
+schemes:
+  - https
+produces:
+  - application/json
+
+securityDefinitions:
+  ApiKeyAuth:
+    type: apiKey
+    in: query
+    name: key
+
+security:
+  - ApiKeyAuth: []
+
+paths:
+  /getVersion:
+    $ref: "./operations/getVersion.yaml"
+
+  /getSynsetIds:
+    $ref: "./operations/getSynsetIds.yaml"
+
+  /getSynset:
+    $ref: "./operations/getSynset.yaml"
+
+  /getSenses:
+    $ref: "./operations/getSenses.yaml"
+
+  /getSynsetIdsFromResourceID:
+    $ref: "./operations/getSynsetIdsFromResourceID.yaml"
+
+  /getOutgoingEdges:
+    $ref: "./operations/getOutgoingEdges.yaml"

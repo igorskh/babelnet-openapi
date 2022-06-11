@@ -1,0 +1,264 @@
+definitions:
+  SynsetID:
+    type: object
+    properties:
+      id:
+        type: string
+        example: bn:00289737n
+      pos:
+        type: string
+        example: NOUN
+      source:
+        type: string
+        example: BABELNET
+
+  SynsetIDList:
+    type: array
+    items:
+      $ref: "#/definitions/SynsetID"
+
+  SynsetInformation:
+    type: object
+    properties:
+      senses:
+        type: array
+        items:
+          $ref: "#/definitions/BNSense"
+      wnOffsets:
+        type: array
+        items:
+          $ref: "#/definitions/BNWnOffset"
+      glosses:
+        type: array
+        items:
+          $ref: "#/definitions/BNGloss"
+      examples:
+        type: array
+        items:
+          $ref: 
+        # todo
+      images:
+        type: array
+        items:
+          $ref: "#/definitions/BNImage"
+      synsetType:
+        type: string
+        example: CONCEPT
+      categories:
+        type: array
+        items:
+          $ref: "#/definitions/BNCategory"
+      domains:
+        $ref: "#/definitions/BNDomainsDict"
+      lnToCompound:
+        $ref: "#/definitions/BNStringDict"
+      lnToOtherForm:
+        $ref: "#/definitions/BNStringDict"
+      filterLangs:
+        type: array
+        items:
+          type: string
+      bkeyConcepts:
+        type: boolean
+
+  BNSense:
+    type: object
+    properties:
+      type:
+        type: string
+        example: BabelSense
+      properties:
+        $ref: "#/definitions/BNSenseProperties"
+
+  BNSenseProperties:
+    type: object
+    properties:
+      fullLemma:
+        type: string
+        example: Apple-designed_processors
+      simpleLemma:
+        type: string
+        example: apple-designed_processors
+      lemma:
+        $ref: "#/definitions/BNLemma"
+      example:
+        type: string
+        example: WIKI
+      senseKey:
+        type: string
+        example: "32327247"
+      frequency:
+        type: integer
+        example: 0
+      language:
+        type: string
+        example: EN
+      pos:
+        type: string
+        example: NOUN
+      synsetID:
+        $ref: "#/definitions/SynsetID"
+      translationInfo:
+        type: string
+      pronunciations:
+        $ref: "#/definitions/BNPronunciations"
+      bKeySense:
+        type: boolean
+      idSense:
+        type: integer
+        example: 123090446
+      # TODO: sample data
+      # tags:
+      
+  BNPronunciations:
+    type: object
+    properties:
+      transcriptions:
+        type: array
+        items:
+          type: string
+
+  BNLemma:
+    type: object
+    properties:
+      lemma:
+        type: string
+        example: Apple-designed_processors
+      type:
+        type: string
+        example: HIGH_QUALITY
+
+  BNWnOffset:
+    type: object
+    properties:
+      version:
+        type: string
+      id:
+        type: string
+      pos:
+        type: string
+      source:
+        type: string
+
+  BNGloss:
+    type: object
+    properties:
+      source:
+        type: string
+        example: WIKIDATA
+      sourceSense:
+        type: integer
+        example: 264582065
+      language:
+        type: string
+        example: EN
+      gloss:
+        type: string
+        example: Processor chips designed by Apple Inc. for use in their product portfolio.
+      tokens:
+        type: array
+        items:
+          $ref: "#/definitions/BNToken"
+  
+  BNToken:
+    type: object
+    properties:
+      start:
+        type: integer
+        example: 76
+      end:
+        type: integer
+        example: 91
+      id:
+        $ref: "#/definitions/SynsetID"
+      word:
+        type: string
+        example: system on a chip
+
+  BNImage:
+    type: object
+    properties:
+      name:
+        type: string
+        example: Apple_A4_Chip.jpg#WIKI
+      languages:
+        type: array
+        items:
+          type: string
+          example:
+          - RU
+          - FR
+      urlSource:
+        type: string
+        example: WIKI
+      license:
+        type: string
+        example: CC_BY_SA_30
+      thumbUrl:
+        type: string
+        example: https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Apple_A4_Chip.jpg/200px-Apple_A4_Chip.jpg
+      url:
+        type: string
+        example: https://upload.wikimedia.org/wikipedia/commons/1/17/Apple_A4_Chip.jpg
+      badImage:
+        type: boolean
+
+  BNCategory:
+    type: object
+    properties:
+      category:
+        type: string
+        example: ARM_architecture
+      language:
+        type: string
+        example: EN
+
+  BNDomainsDict:
+    type: object
+    additionalProperties:
+      type: number
+      format: double
+      
+  BNStringDict:
+    type: object
+    additionalProperties:
+      type: array
+      items:
+        type: string
+
+  BNEdge:
+    type: object
+    properties:
+      language:
+        type: string
+        example: MUL
+      pointer:
+        $ref: "#/definitions/BNEdgePointer"
+      target:
+        type: string
+        example: bn:00021497n
+      weight:
+        type: number
+        format: double
+      normalizedWeight:
+        type: number
+        format: double
+  
+  BNEdgePointer:
+    type: object
+    properties:
+      fSymbol:
+        type: string
+        example: wdp31
+      name:
+        type: string
+        example: instance_of
+      shortName:
+        type: string
+        example: instance_of
+      relationGroup:
+        type: string
+        example: HYPERNYM
+      isAutomatic:
+        type: boolean
+      

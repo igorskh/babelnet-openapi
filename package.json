@@ -1,0 +1,26 @@
+{
+    "name": "babelnet-openapi",
+    "version": "1.0.0",
+    "description": "Unofficial BabelNet API Definition",
+    "main": "index.js",
+    "scripts": {
+        "test": "npm run-script merge && npx swagger validate complete-swagger-main.yaml",
+        "merge": "node merge.js",
+        "redoc": "@redocly preview-docs complete-swagger-main.yaml",
+        "mock": "prism mock swagger-complete.yaml",
+        "build": "npm run-script merge && npm run-script redoc"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git@github.com:igorskh/babelnet-openapi.git"
+    },
+    "author": "Igor Kim",
+    "license": "MIT",
+    "homepage": "https://github.com/igorskh/babelnet-openapi",
+    "dependencies": {
+        "@redocly/cli": "^1.0.0-beta.102",
+        "@stoplight/prism-cli": "^4.7.0",
+        "swagger-cli": "^4.0.4",
+        "swagger-merger": "^1.5.4"
+    }
+}

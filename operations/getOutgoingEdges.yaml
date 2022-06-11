@@ -1,0 +1,27 @@
+get:
+  tags: ["Synsets"]
+  operationId: getSynset
+  summary: Retrieve synset
+  description: Retrieve the information of a given synset
+  parameters:
+    - in: query
+      name: id
+      required: true
+      type: string
+      description: id of the synset you want to retrieve
+    - in: query
+      name: targetLang
+      type: array
+      items: 
+        type: string
+      description: The languages in which the data are to be retrieved.
+  responses:
+    200:
+      description: A version response
+      schema:
+        type: array
+        items:
+          $ref: "./definitions/synsets.yaml#/definitions/BNEdge"
+    default:
+      description: Unexpected error
+

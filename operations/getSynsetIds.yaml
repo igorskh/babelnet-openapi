@@ -1,0 +1,42 @@
+get:
+  tags: ["Synsets"]
+  operationId: getSynsetIds
+  summary: Retrieve synset IDs
+  description: Retrieve the IDs of the Babel synsets (concepts) denoted by a given word
+  parameters:
+    - in: query
+      name: lemma
+      required: true
+      type: string
+      description: lemma string
+    - in: query
+      name: searchLang
+      required: true
+      type: string
+      description: The language of the word. Accepts multiple values.
+    - in: query
+      name: targetLang
+      type: array
+      items: 
+        type: string
+      description: The languages in which the data are to be retrieved.
+    - in: query
+      name: pos
+      type: array
+      items: 
+        type: string
+      description: Returns only the synsets containing this part of speech (NOUN, VERB, etc). Accepts multiple values.
+    - in: query
+      name: source
+      type: array
+      items: 
+        type: string
+      description: Returns only the synsets containing these sources (WIKT, WIKIDATA, etc). Accepts multiple values.
+  responses:
+    200:
+      description: A version response
+      schema:
+        $ref: "./definitions/synsets.yaml#/definitions/SynsetIDList"
+    default:
+      description: Unexpected error
+

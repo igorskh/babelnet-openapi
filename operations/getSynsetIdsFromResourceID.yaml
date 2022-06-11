@@ -1,0 +1,49 @@
+get:
+  tags: ["Synsets"]
+  operationId: getSynsetIdsFromResourceID
+  summary: Retrieve synset IDs given a resource identifier
+  description: Retrieve a list of BabelNet IDs given a resource identifier
+  parameters:
+    - in: query
+      name: id
+      required: true
+      type: string
+      description: The page title you want to search for
+    - in: query
+      name: lemma
+      type: string
+      description: The word you want to search for
+    - in: query
+      name: searchLang
+      type: string
+      description:  The language of the word
+    - in: query
+      name: targetLang
+      type: array
+      items: 
+        type: string
+      description: The languages in which the data are to be retrieved. Default value is the search language and accepts not more than 3 languages except the search language.
+    - in: query
+      name: pos
+      type: array
+      items: 
+        type: string
+      description: Returns only the synsets containing this part of speech (NOUN, VERB, etc). Accepts multiple values.
+    - in: query
+      name: wnVersion
+      type: string
+    - in: query
+      name: source
+      type: array
+      required: true
+      items: 
+        type: string
+      description: Returns only the synsets containing these sources (WIKT, WIKIDATA, etc). Accepts multiple values.
+  responses:
+    200:
+      description: A version response
+      schema:
+        $ref: "./definitions/synsets.yaml#/definitions/SynsetIDList"
+    default:
+      description: Unexpected error
+

@@ -1,0 +1,13 @@
+get:
+  tags: ["Version"]
+  operationId: getVersion
+  summary: Get API Version
+  description: Get API Version
+  responses:
+    200:
+      description: A version response
+      schema:
+        $ref: "./definitions/version.yaml#/definitions/Version"
+    default:
+      description: Unexpected error
+
