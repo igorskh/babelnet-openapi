@@ -8,7 +8,7 @@
         "test": "npm run-script merge && npx swagger validate complete-swagger-main.yaml",
         "merge": "node merge.js",
         "redoc": "@redocly preview-docs complete-swagger-main.yaml",
-        "redoc-ci": "chmod +x cli_redoc.sh && ./ci_redoc.sh",
+        "redoc-ci": "chmod +x ci_redoc.sh && ./ci_redoc.sh",
         "mock": "prism mock swagger-complete.yaml",
         "build": "npm run-script merge && npm run-script redoc-ci"
     },
