@@ -4,11 +4,13 @@
     "description": "Unofficial BabelNet API Definition",
     "main": "index.js",
     "scripts": {
+        "start": "npm run-script merge && npm run-script redoc",
         "test": "npm run-script merge && npx swagger validate complete-swagger-main.yaml",
         "merge": "node merge.js",
         "redoc": "@redocly preview-docs complete-swagger-main.yaml",
+        "redoc-ci": "./ci_redoc.sh",
         "mock": "prism mock swagger-complete.yaml",
-        "build": "npm run-script merge && npm run-script redoc"
+        "build": "npm run-script merge && npm run-script redoc-ci"
     },
     "repository": {
         "type": "git",
@@ -20,6 +22,7 @@
     "dependencies": {
         "@redocly/cli": "^1.0.0-beta.102",
         "@stoplight/prism-cli": "^4.7.0",
+        "redoc-cli": "^0.13.16",
         "swagger-cli": "^4.0.4",
         "swagger-merger": "^1.5.4"
     }
